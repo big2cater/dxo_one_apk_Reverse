@@ -1,4 +1,3 @@
-============================================================
 DxO ONE APK 修改说明(仅个人学习研究使用)
 DxO ONE APK Modification Notes (For Personal Research and Study Only)
 ============================================================

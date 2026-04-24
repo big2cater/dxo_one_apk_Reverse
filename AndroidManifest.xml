@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dxo.one">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <permission android:name="com.dxo.one.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <uses-feature android:name="android.hardware.usb.host"/>
+    <application android:allowBackup="true" android:debuggable="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="com.dxo.one.DxOApplication" android:supportsRtl="false" android:theme="@style/AppTheme.Fullscreen">
+        <activity android:label="@string/app_name" android:name="com.dxo.one.presentation.appmenu.AppMenuActivity" android:theme="@style/AppTheme"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:name="com.dxo.one.presentation.appmenu.ConnectedAppMenuActivity" android:screenOrientation="userLandscape"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.dxo.one.presentation.capture.CaptureActivity" android:screenOrientation="userLandscape"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:name="com.dxo.one.presentation.capture.CaptureModeActivity" android:screenOrientation="userLandscape"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:name="com.dxo.one.presentation.capture.settings.CaptureSettingsActivity" android:screenOrientation="userLandscape"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="true" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.dxo.one.presentation.main.MainActivity" android:screenOrientation="userLandscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
+            </intent-filter>
+            <meta-data android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" android:resource="@xml/device_filter"/>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:name="com.dxo.one.presentation.main.developermenu.DeveloperMenuActivity" android:screenOrientation="userLandscape"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:name="com.dxo.one.presentation.gallery.GalleryActivity" android:screenOrientation="userLandscape"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:name="com.dxo.one.presentation.gallery.mediascreen.videoplayer.VideoPlayerActivity" android:screenOrientation="userLandscape"/>
+        <activity android:configChanges="orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.dxo.one.presentation.wifi.WifiConnectionActivity" android:screenOrientation="userLandscape"/>
+        <service android:exported="false" android:name="com.dxo.one.app.device.DeviceMediaService"/>
+        <service android:exported="false" android:name="com.dxo.one.app.FirmwareUpdateService"/>
+        <service android:exported="false" android:name="com.dxo.one.app.NotificationService"/>
+        <service android:exported="false" android:name="com.dxo.one.app.StateService"/>
+        <service android:exported="false" android:name="com.dxo.one.app.wifi.connection.WifiConnectionService"/>
+        <provider android:authorities="com.dxo.one" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths"/>
+        </provider>
+        <service android:exported="false" android:name="com.dxo.camera.simulator.SimulatorService"/>
+        <service android:exported="false" android:name="com.dxo.infrastructure.communication.CommunicationService"/>
+        <service android:exported="false" android:name="com.dxo.infrastructure.camera.CameraService"/>
+        <service android:exported="false" android:name="com.dxo.infrastructure.camera.CameraMediaService"/>
+        <service android:exported="false" android:name="com.dxo.infrastructure.stream.QuickviewService"/>
+        <service android:exported="false" android:name="com.dxo.infrastructure.stream.ViewfinderService"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <meta-data android:name="com.android.vending.derived.apk.id" android:value="1"/>
+    </application>
+</manifest>
